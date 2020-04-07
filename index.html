@@ -125,6 +125,9 @@
 									</tr>
 								</tbody>
 							</table>
+							<div class="mdc-typography mdc-typography--body2"><span data-lang-key="starternote1">Once proofed, you will use all this starter</span> 
+								(<span id="startersize"></span><span data-lang-key="grams"></span>) <span data-lang-key="starternote2">in the next step.</span>
+							</div>
 						</div>
 						<div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-6-desktop">
 							<div class="mdc-typography mdc-typography--headline6 app-headline" data-lang-key="kneadtitle">Knead your bread</div>
@@ -156,14 +159,12 @@
 									</tr>
 								</tbody>
 							</table>
+							<p class="mdc-typography mdc-typography--body2" data-lang-key="footnote">
+								* If you use oil, add it halfway through the kneading. Salt must be added at the end.
+							</p>
 						</div>
 					</div>
 				</div>
-			</section>
-			<section class="app-section">
-				<p class="mdc-typography mdc-typography--body2" data-lang-key="footnote">
-					* If you use oil, add it halfway through the kneading. Salt must be added at the end.
-				</p>
 			</section>
 		</div>
 
@@ -216,6 +217,7 @@
 			knead.forEach(function(value, index) {
 				$(cells[index]).text(value);
 			});
+			$('#startersize').text(knead[0]);
 
 			sum = recipes[method].starter.reduce(function(total, value) {
 				return total + value;
@@ -227,6 +229,7 @@
 			starter.forEach(function(value, index) {
 				$(cells[index]).text(value);
 			});
+			
 		}
 
 		function setMethod(str) {
@@ -249,8 +252,8 @@
 		var language = 'English';
 
 		recipes = {
-			'easy': {starter: [5, 4, 2], knead: [35, 55, 100, 2.5, 3, 3]},
-			'normal': {starter: [5, 4, 1], knead: [20, 63, 100, 2.5, 3, 3]}
+			'easy': {starter: [2, 4, 5], knead: [35, 55, 100, 2.5, 3, 3]},
+			'normal': {starter: [1, 4, 5], knead: [20, 63, 100, 2.5, 3, 3]}
 		};
 		//title, method, easy, normal, language, breadsize, grams, startertitle, motherdough, water, flour, kneadtitle, starter, salt, sugar, oil, footnote
 		languages = {
@@ -271,7 +274,9 @@
 				'salt': 'Salt*',
 				'sugar': 'Sugar (optional)',
 				'oil': 'Oil (optional)*',
-				'footnote' : '*If you use oil, add it halfway through kneading. Salt must be added at the end, then knead until distributed evenly.'
+				'footnote' : '*If you use oil, add it halfway through kneading. Salt must be added at the end, then knead until distributed evenly.',
+				'starternote1': 'Once proofed, you will use all this starter',
+				'starternote2': 'in the next step.'
 			},
 			'Magyar': {
 				'title': 'Kovászos kenyér',
@@ -290,7 +295,9 @@
 				'salt': 'Só*',
 				'sugar': 'Cukor (opcionális)',
 				'oil': 'Olaj (opcionális)*',
-				'footnote' : '*Az olajat a dagasztás felénél tedd hozzá a tésztához. A sót a végén add hozzá, és dagaszd át, hogy egyenletesen elkeveredjen a tésztábam.'
+				'footnote' : '*Az olajat a dagasztás felénél tedd hozzá a tésztához. A sót a végén add hozzá, és dagaszd át, hogy egyenletesen elkeveredjen a tésztábam.',
+				'starternote1': 'Ha felfutott, ezt az egész mennyiséget',
+				'starternote2': 'fogod felhasználni a következő lépésben.'
 			},			
 		};
 		</script>
