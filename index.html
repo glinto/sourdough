@@ -176,7 +176,8 @@
 
 			if (localStorage.getItem('weight')) slider.value = localStorage.getItem('weight');
 			if (localStorage.getItem('method')) setMethod(localStorage.getItem('method'));
-			if (localStorage.getItem('language')) setLanguage(localStorage.getItem('language'));
+			if (localStorage.getItem('language')) language = localStorage.getItem('language');
+			setLanguage(language);
 
 			slider.listen('MDCSlider:change', function() {
 				$('#breadsize').text(slider.value);
