@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0">
+		<title>Sourdough</title>
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
+		<link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+		<link href="https://unpkg.com/material-components-web@v4.0.0/dist/material-components-web.min.css" rel="stylesheet">
+		<script src="https://unpkg.com/material-components-web@v4.0.0/dist/material-components-web.min.js"></script>
+
+		<style type="text/css">
+			:root {
+				--default-padding: 1em;
+			}
+			
+			body { 
+				margin: 0; padding: 0; 
+			}
+			
+			.app-section {
+				padding: 0 2em;
+				max-width: 800px;
+				margin: 0 auto;
+			}
+
+			.app-section--grid {
+				padding: 0 var(--default-padding);
+			}
+
+			.app-section .app-section--inner {
+				padding-top: var(--default-padding);
+			}
+
+			.app-headline {
+				padding-bottom: var(--default-padding);
+			}
+
+			.mdc-slider__pin-value-marker { font-size: 0.5em; }
+
+		</style>
+	</head>
+	<body>
+		<aside class="mdc-drawer mdc-drawer--modal" id="mainmenu">
+			<div class="mdc-drawer__header">
+				<h3 class="mdc-drawer__title" data-lang-key="title">Sourdough</h3>
+				<h6 class="mdc-drawer__subtitle">github.com/glinto/sourdough</h6>
+			</div>
+			<div class="mdc-drawer__content">
+				<nav class="mdc-list">
+					<h6 class="mdc-list-group__subheader" data-lang-key="method">Method</h6>
+					<a class="mdc-list-item mdc-list-item--activated" href="#" data-method-select="easy">
+						<i class="material-icons mdc-list-item__graphic" aria-hidden="true">bookmark</i>
+						<span class="mdc-list-item__text" data-lang-key="easy">Easy - fast proof</span>
+					</a>
+					<a class="mdc-list-item" href="#" data-method-select="normal">
+						<i class="material-icons mdc-list-item__graphic" aria-hidden="true">bookmark</i>
+						<span class="mdc-list-item__text" data-lang-key="normal">Normal</span>
+					</a>
+				</nav>
+				<nav class="mdc-list">
+					<hr class="mdc-list-divider">
+					<h6 class="mdc-list-group__subheader" data-lang-key="language">Language</h6>
+					<a class="mdc-list-item" href="#" data-lang-select="English">
+						<i class="material-icons mdc-list-item__graphic" aria-hidden="true">flag</i>
+						<span class="mdc-list-item__text">English</span>
+					</a>
+					<a class="mdc-list-item" href="#" data-lang-select="Magyar">
+						<i class="material-icons mdc-list-item__graphic" aria-hidden="true">flag</i>
+						<span class="mdc-list-item__text">Magyar</span>
+					</a>
+				</nav>
+			</div>
+		</aside>		
+		<div class="mdc-drawer-scrim"></div>
+
+		<header class="mdc-top-app-bar mdc-top-app-bar--fixed">
+			<div class="mdc-top-app-bar__row">
+				<section class="mdc-top-app-bar__section mdc-top-app-bar__section--align-start">
+					<button class="material-icons mdc-top-app-bar__navigation-icon mdc-icon-button">menu</button>
+					<span class="mdc-top-app-bar__title" data-lang-key="title">Sourdough bread</span>
+				</section>
+			</div>
+		</header>
+		<div class="page-content mdc-top-app-bar--fixed-adjust">
+			<section class="app-section">
+				<div class="app-section--inner mdc-typography mdc-typography--headline6">
+					<span data-lang-key="breadsize">Desired bread size</span>: <span id="breadsize">500</span><span data-lang-key="grams">grams</span>
+				</div>
+				<div class="mdc-slider mdc-slider--discrete" tabindex="0" role="slider"
+					aria-valuemin="500" aria-valuemax="2000" aria-valuenow="500"
+					aria-label="" data-step="50">
+					<div class="mdc-slider__track-container">
+						<div class="mdc-slider__track"></div>
+					</div>
+					<div class="mdc-slider__thumb-container">
+						<div class="mdc-slider__pin">
+							<span class="mdc-slider__pin-value-marker"></span>
+						</div>
+						<svg class="mdc-slider__thumb" width="21" height="21">
+							<circle cx="10.5" cy="10.5" r="7.875"></circle>
+						</svg>
+						<div class="mdc-slider__focus-ring"></div>
+					</div>
+				</div>
+			</section>
+			<section class="app-section app-section--grid">
+				<div class="mdc-layout-grid ">
+					<div class="mdc-layout-grid__inner">
+						<div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-6-desktop">
+							<div class="mdc-typography mdc-typography--headline6 app-headline" data-lang-key="startertitle">Prepare your starter</div>
+							<table class="mdc-data-table__table" aria-label="Scores" id="startertable">
+								<tbody class="mdc-data-table__content">
+									<tr class="mdc-data-table__row">
+										<td class="mdc-data-table__cell" data-lang-key="motherdough">Motherdough</td>
+										<td class="mdc-data-table__cell mdc-data-table__cell--numeric"><span class="app-quantity"></span><span data-lang-key="grams"></span></td>
+									</tr>
+									<tr class="mdc-data-table__row">
+										<td class="mdc-data-table__cell" data-lang-key="water">Water</td>
+										<td class="mdc-data-table__cell mdc-data-table__cell--numeric"><span class="app-quantity"></span><span data-lang-key="grams"></span></td>
+									</tr>
+									<tr class="mdc-data-table__row">
+										<td class="mdc-data-table__cell" data-lang-key="flour">Flour</td>
+										<td class="mdc-data-table__cell mdc-data-table__cell--numeric"><span class="app-quantity"></span><span data-lang-key="grams"></span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+						<div class="mdc-layout-grid__cell mdc-layout-grid__cell--span-4-phone mdc-layout-grid__cell--span-8-tablet mdc-layout-grid__cell--span-6-desktop">
+							<div class="mdc-typography mdc-typography--headline6 app-headline" data-lang-key="kneadtitle">Knead your bread</div>
+							<table class="mdc-data-table__table" aria-label="Scores" id="kneadtable">
+								<tbody class="mdc-data-table__content">
+									<tr class="mdc-data-table__row">
+										<td class="mdc-data-table__cell" data-lang-key="starter">Starter</td>
+										<td class="mdc-data-table__cell mdc-data-table__cell--numeric"><span class="app-quantity"></span><span data-lang-key="grams"></span></td>
+									</tr>
+									<tr class="mdc-data-table__row">
+										<td class="mdc-data-table__cell" data-lang-key="water">Water</td>
+										<td class="mdc-data-table__cell mdc-data-table__cell--numeric"><span class="app-quantity"></span><span data-lang-key="grams"></span></td>
+									</tr>
+									<tr class="mdc-data-table__row">
+										<td class="mdc-data-table__cell" data-lang-key="flour">Flour</td>
+										<td class="mdc-data-table__cell mdc-data-table__cell--numeric"><span class="app-quantity"></span><span data-lang-key="grams"></span></td>
+									</tr>
+									<tr class="mdc-data-table__row">
+										<td class="mdc-data-table__cell" data-lang-key="salt">Salt*</td>
+										<td class="mdc-data-table__cell mdc-data-table__cell--numeric"><span class="app-quantity"></span><span data-lang-key="grams"></span></td>
+									</tr>
+									<tr class="mdc-data-table__row">
+										<td class="mdc-data-table__cell" data-lang-key="sugar">Sugar (optional)</td>
+										<td class="mdc-data-table__cell mdc-data-table__cell--numeric"><span class="app-quantity"></span><span data-lang-key="grams"></span></td>
+									</tr>
+									<tr class="mdc-data-table__row">
+										<td class="mdc-data-table__cell" data-lang-key="oil">Oil (optional)*</td>
+										<td class="mdc-data-table__cell mdc-data-table__cell--numeric"><span class="app-quantity"></span><span data-lang-key="grams"></span></td>
+									</tr>
+								</tbody>
+							</table>
+						</div>
+					</div>
+				</div>
+			</section>
+			<section class="app-section">
+				<p class="mdc-typography mdc-typography--body2" data-lang-key="footnote">
+					* If you use oil, add it halfway through the kneading. Salt must be added at the end.
+				</p>
+			</section>
+		</div>
+
+		
+		<script>
+		$(document).ready(function () {
+			mdc.topAppBar.MDCTopAppBar.attachTo(document.querySelector('.mdc-top-app-bar'));
+			mainmenu = mdc.drawer.MDCDrawer.attachTo(document.querySelector('.mdc-drawer'));
+			slider = mdc.slider.MDCSlider.attachTo(document.querySelector('.mdc-slider'));
+
+			if (localStorage.getItem('weight')) slider.value = localStorage.getItem('weight');
+			if (localStorage.getItem('method')) setMethod(localStorage.getItem('method'));
+			if (localStorage.getItem('language')) setLanguage(localStorage.getItem('language'));
+
+			slider.listen('MDCSlider:change', function() {
+				$('#breadsize').text(slider.value);
+				localStorage.setItem('weight', slider.value);
+				updateQuantities();
+			});
+
+			$('.mdc-list-item[data-method-select]').click(function(event) {
+				mainmenu.open = false;
+				setMethod($(event.currentTarget).attr('data-method-select'));
+				updateQuantities();
+			});
+
+			$('.mdc-list-item[data-lang-select]').click(function(event) {
+				mainmenu.open = false;
+				setLanguage($(event.currentTarget).attr('data-lang-select'));
+			});
+
+			$('.mdc-top-app-bar__navigation-icon').click(function() {
+				mainmenu.open = true;
+			});
+			
+			
+			$('#breadsize').text(slider.value);
+			updateQuantities();
+		});
+
+		function updateQuantities() {
+			var sum = recipes[method].knead.reduce(function(total, value) {
+				return total + value;
+			});
+			var knead = recipes[method].knead.map(function(value) {
+				return parseInt(value / sum * slider.value);
+			});
+			var cells = $('#kneadtable .app-quantity');
+			knead.forEach(function(value, index) {
+				$(cells[index]).text(value);
+			});
+
+			sum = recipes[method].starter.reduce(function(total, value) {
+				return total + value;
+			});
+			var starter = recipes[method].starter.map(function(value) {
+				return parseInt(value / sum * knead[0]);
+			});
+			cells = $('#startertable .app-quantity');
+			starter.forEach(function(value, index) {
+				$(cells[index]).text(value);
+			});
+		}
+
+		function setMethod(str) {
+			if (!recipes[str]) return;
+			method = str;
+			localStorage.setItem('method', str);
+			$('.mdc-list-item[data-method-select]').removeClass('mdc-list-item--activated');
+			$('.mdc-list-item[data-method-select="' + str + '"]').addClass('mdc-list-item--activated');
+		}
+
+		function setLanguage(str) {
+			if (!languages[str]) return;
+			localStorage.setItem('language', str);
+			for (var s in languages[str]) {
+				$('[data-lang-key="' + s + '"]').text(languages[str][s]);
+			}
+		}
+
+		var method = 'easy';
+		var language = 'English';
+
+		recipes = {
+			'easy': {starter: [5, 4, 2], knead: [35, 55, 100, 2.5, 3, 3]},
+			'normal': {starter: [5, 4, 1], knead: [20, 63, 100, 2.5, 3, 3]}
+		};
+		//title, method, easy, normal, language, breadsize, grams, startertitle, motherdough, water, flour, kneadtitle, starter, salt, sugar, oil, footnote
+		languages = {
+			'English': {
+				'title': 'Sourdough bread',
+				'method': 'Method',
+				'easy': 'Easy - fast proof',
+				'normal': 'Normal',
+				'language': 'Language',
+				'breadsize': 'Desired bread size',
+				'grams': ' grams',
+				'startertitle': 'Prepare your starter',
+				'motherdough': 'Motherdough',
+				'water': 'Water',
+				'flour': 'Flour',
+				'kneadtitle': 'Knead your dough',
+				'starter': 'Starter',
+				'salt': 'Salt*',
+				'sugar': 'Sugar (optional)',
+				'oil': 'Oil (optional)*',
+				'footnote' : '*If you use oil, add it halfway through kneading. Salt must be added at the end, then knead until distributed evenly.'
+			},
+			'Magyar': {
+				'title': 'Kovászos kenyér',
+				'method': 'Módszer',
+				'easy': 'Kezdő - gyors',
+				'normal': 'Normál',
+				'language': 'Nyelv',
+				'breadsize': 'Ekkora kenyeret szeretnék',
+				'grams': ' g',
+				'startertitle': 'Aktív kovász elkészítése',
+				'motherdough': 'Anyakovász',
+				'water': 'Víz',
+				'flour': 'Liszt',
+				'kneadtitle': 'Tészta bedagasztása',
+				'starter': 'Aktív kovász',
+				'salt': 'Só*',
+				'sugar': 'Cukor (opcionális)',
+				'oil': 'Olaj (opcionális)*',
+				'footnote' : '*Az olajat a dagasztás felénél tedd hozzá a tésztához. A sót a végén add hozzá, és dagaszd át, hogy egyenletesen elkeveredjen a tésztábam.'
+			},			
+		};
+		</script>
+	</body>
+</html>
