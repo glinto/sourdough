@@ -48,13 +48,17 @@
 			<div class="mdc-drawer__content">
 				<nav class="mdc-list">
 					<h6 class="mdc-list-group__subheader" data-lang-key="method">Method</h6>
-					<a class="mdc-list-item mdc-list-item--activated" href="#" data-method-select="easy">
+					<a class="mdc-list-item mdc-list-item--activated" href="#" data-method-select="easyfast">
 						<i class="material-icons mdc-list-item__graphic" aria-hidden="true">bookmark</i>
-						<span class="mdc-list-item__text" data-lang-key="easy">Easy - fast proof</span>
+						<span class="mdc-list-item__text" data-lang-key="easyfast">Beginners - easy</span>
 					</a>
-					<a class="mdc-list-item" href="#" data-method-select="normal">
+					<a class="mdc-list-item" href="#" data-method-select="easyslow">
 						<i class="material-icons mdc-list-item__graphic" aria-hidden="true">bookmark</i>
-						<span class="mdc-list-item__text" data-lang-key="normal">Normal</span>
+						<span class="mdc-list-item__text" data-lang-key="easyslow">Beginners - slower</span>
+					</a>
+					<a class="mdc-list-item" href="#" data-method-select="intermediate">
+						<i class="material-icons mdc-list-item__graphic" aria-hidden="true">bookmark</i>
+						<span class="mdc-list-item__text" data-lang-key="intermediate">Intermediate - more hydration</span>
 					</a>
 				</nav>
 				<nav class="mdc-list">
@@ -251,7 +255,7 @@
 		var language = 'English';
 
 		recipes = {
-			'novice': {starter: [2, 4, 5], knead: [35, 55, 100, 2.5, 3, 3]},
+			'easyfast': {starter: [2, 4, 5], knead: [35, 55, 100, 2.5, 3, 3]},
 			'easyslow': {starter: [2, 4, 5], knead: [20, 63, 100, 2.5, 3, 3]},
 			'intermediate': {starter: [1, 4, 5], knead: [30, 75, 100, 2.5, 3, 3]},
 		};
