@@ -251,16 +251,18 @@
 		var language = 'English';
 
 		recipes = {
-			'easy': {starter: [2, 4, 5], knead: [35, 55, 100, 2.5, 3, 3]},
-			'normal': {starter: [1, 4, 5], knead: [20, 63, 100, 2.5, 3, 3]}
+			'novice': {starter: [2, 4, 5], knead: [35, 55, 100, 2.5, 3, 3]},
+			'easyslow': {starter: [2, 4, 5], knead: [20, 63, 100, 2.5, 3, 3]},
+			'intermediate': {starter: [1, 4, 5], knead: [30, 75, 100, 2.5, 3, 3]},
 		};
 		//title, method, easy, normal, language, breadsize, grams, startertitle, motherdough, water, flour, kneadtitle, starter, salt, sugar, oil, footnote
 		languages = {
 			'English': {
 				'title': 'Sourdough bread',
 				'method': 'Method',
-				'easy': 'Easy - fast proof',
-				'normal': 'Normal',
+				'easyfast': 'Beginners - easy and fast',
+				'easyslow': 'Beginners - slower proof',
+				'intermediate': 'Intermediate - more hydration',
 				'language': 'Language',
 				'breadsize': 'Desired bread size',
 				'grams': ' grams',
@@ -280,8 +282,9 @@
 			'Magyar': {
 				'title': 'Kovászos kenyér',
 				'method': 'Módszer',
-				'easy': 'Kezdő - gyors',
-				'normal': 'Normál',
+				'easyfast': 'Kezdő - könnyű és gyors',
+				'easyslow': 'Kezdő - lassabb érlelés',
+				'intermediate': 'Haladó - jobban hidratált',
 				'language': 'Nyelv',
 				'breadsize': 'Ekkora kenyeret szeretnék',
 				'grams': ' g',
